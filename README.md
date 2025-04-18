@@ -4,7 +4,7 @@
 
 ## 安装
 
-在release页最新版本，找到适合自己机器的安装包下载即可
+在 [release](https://github.com/pythonzm/libra/releases) 页最新版本，找到适合自己机器的安装包下载即可
 
 ### 要求
 
