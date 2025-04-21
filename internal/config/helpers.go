@@ -35,8 +35,6 @@ const (
 	DefaultGitHubToken = "YOUR_GITHUB_TOKEN"
 	DefaultAPIUrl      = "https://models.github.ai/inference/chat/completions"
 	DefaultModel       = "openai/gpt-4o-mini"
-	DefaultScriptPath  = "~/libra_data/scripts"
-	DefaultChatPath    = "~/libra_data/chats"
 	DefaultReqTimeout  = 20 * time.Second
 	DefaultIdleTimeout = 5 * time.Minute
 
@@ -87,7 +85,11 @@ echo "Hello World" > test.txt
 	`
 )
 
-var DefaultConfigFile string = filepath.Join("~/.libra.conf")
+var homeDir, _ = os.UserHomeDir()
+
+var DefaultScriptPath string = filepath.Join(homeDir, "libra_data", "scripts")
+var DefaultChatPath string = filepath.Join(homeDir, "libra_data", "chats")
+var DefaultConfigFile string = filepath.Join(homeDir, ".libra.conf")
 
 func GetFinalConfigValue(
 	c *cli.Context,
