@@ -21,7 +21,7 @@ $ ./libra i
 配置已成功写入文件: /home/zm/.libra.conf
 
 # 也可以通过命令行参数指定
-$ ./libra s -g xxxxxxxxxx
+$ ./libra -g xxxxxxxxxx
 ```
 
 ## 使用
