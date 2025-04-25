@@ -26,7 +26,7 @@ $ ./libra s -g xxxxxxxxxx
 
 ## 使用
 
-[![asciicast](https://asciinema.org/a/MKKqLMF3hvcMB0y26CknsqPQk.svg)](https://asciinema.org/a/MKKqLMF3hvcMB0y26CknsqPQk)
+[![asciicast](https://asciinema.org/a/716947.svg)](https://asciinema.org/a/716947)
 
 ### 示例
 
@@ -41,22 +41,22 @@ USAGE:
    libra [global options] command [command options]
 
 VERSION:
-   1.0
+   1.3
 
 COMMANDS:
    init, i  生成配置文件
-   seek, s  只咨询AI相关问题，不执行任何命令
    exec, e  将AI回答的答案存储至脚本文件用于执行
    help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --config value, -c value                      指定配置文件路径 (default: "~/.libra.conf")
+   --config value, -c value                      指定配置文件路径 (default: "/home/zm/.libra.conf")
    --github-token value, -g value                指定github token (default: "YOUR_GITHUB_TOKEN")
    --apiurl value, -u value                      指定api地址，一般情况下默认即可 (default: "https://models.github.ai/inference/chat/completions")
    --req-timeout value, -t value                 设置请求超时时间 (default: "20s")
    --idle-timeout value, -T value, --idle value  设置空闲超时时间 (default: "5m0s")
    --model value, -m value                       指定模型，更多可用模型：https://github.com/marketplace?type=models (default: "openai/gpt-4o-mini")
-   --chat-path value, -C value                   指定对话内容存储路径 (default: "~/libra_data/chats")
+   --chat-path value, -C value                   指定对话内容存储路径 (default: "/home/zm/libra_data/chats")
+   --prompt value, -p value                      指定自定义prompt
    --help, -h                                    show help
    --version, -v                                 print the version
 ```
@@ -71,7 +71,7 @@ $ ./libra i
 #### 咨询问题
 
 ```bash
-$ ./libra s
+$ ./libra
 2025/04/18 10:44:58 common.go:26: 警告: 解析配置文件 '~/.libra.conf' 失败: 配置文件 '~/.libra.conf' 不存在，将使用环境变量/参数/默认值
 命令行助手已开启. 输入 'q', 'quit' 或者 'exit' 退出.
 >>> 查看当前占用内存最多的5个进程
@@ -110,7 +110,7 @@ zm           458  0.1  0.9 11620172 78420 pts/0  Sl+  Apr14   5:57 /home/zm/.vsc
 #### 其他用途
 
 ```bash
-=$ ./libra s -p "你是一名出色的解梦大师，精通各种梦境解读"
+$ ./libra -p "你是一名出色的解梦大师，精通各种梦境解读"
 2025/04/18 10:50:31 common.go:26: 警告: 解析配置文件 '~/.libra.conf' 失败: 配置文件 '~/.libra.conf' 不存在，将使用环境变量/参数/默认值
 命令行助手已开启. 输入 'q', 'quit' 或者 'exit' 退出.
 >>> 

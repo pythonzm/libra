@@ -12,7 +12,7 @@ import (
 const (
 	appName    = "libra"
 	appUsage   = "A AI helper for CLI"
-	appVersion = "1.0"
+	appVersion = "1.3"
 )
 
 var GlobalFlags = []cli.Flag{
@@ -58,6 +58,12 @@ var GlobalFlags = []cli.Flag{
 		Aliases: []string{"C"},
 		Usage:   "指定对话内容存储路径",
 	},
+	&cli.StringFlag{
+		Name:    config.ConfigFlagPrompt,
+		Value:   "",
+		Aliases: []string{"p"},
+		Usage:   "指定自定义prompt",
+	},
 }
 
 func SetupApp() *cli.App {
@@ -67,6 +73,7 @@ func SetupApp() *cli.App {
 		Version:              appVersion,
 		Flags:                GlobalFlags,
 		EnableBashCompletion: true,
+		Action:               commands.SeekAction,
 
 		Commands: []*cli.Command{
 			{
@@ -77,29 +84,9 @@ func SetupApp() *cli.App {
 				Action:  commands.InitAction,
 			},
 			{
-				Name:    "seek",
-				Aliases: []string{"s"},
-				Flags: append([]cli.Flag{
-					&cli.StringFlag{
-						Name:    config.ConfigFlagPrompt,
-						Value:   config.DefaultSeekPrompt,
-						Aliases: []string{"p"},
-						Usage:   "指定运行seek指令的提示语",
-					},
-				}, GlobalFlags...),
-				Usage:  "只咨询AI相关问题，不执行任何命令",
-				Action: commands.SeekAction,
-			},
-			{
 				Name:    "exec",
 				Aliases: []string{"e"},
 				Flags: append([]cli.Flag{
-					&cli.StringFlag{
-						Name:    config.ConfigFlagPrompt,
-						Value:   config.DefaultExecPrompt,
-						Aliases: []string{"p"},
-						Usage:   "指定运行exec脚本的提示语",
-					},
 					&cli.StringFlag{
 						Name:    config.ConfigFlagScriptPath,
 						Value:   config.DefaultScriptPath,
